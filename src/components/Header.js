@@ -9,6 +9,7 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [user, setUser] = useState({});
   useEffect(() => {
     console.log("window.location.pathname", window.location.pathname);
     if (window.localStorage.pathname === "/login") {
@@ -18,6 +19,7 @@ const Header = () => {
     }
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
+      setUser(user);
       setIsLoggedIn(true);
     }
   }, []);
@@ -61,9 +63,9 @@ const Header = () => {
           Services
         </a> */}
         {isLoggedIn && (
-          <a href="/profile" className="nav-link profile">
+          <a href={`/profile/${user?._id}`} className="nav-link profile">
             <div className="profile_icon">
-              <span>HY</span>
+              <span className="text-light">{user?.username?.[0]}</span>
             </div>
           </a>
         )}

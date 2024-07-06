@@ -23,7 +23,7 @@ const PostItem = ({ post, setPosts }) => {
   const { isPostDeleted, setIsPostDeleted } = useContext(AppContext);
   const { showAlert } = useSweetAlert();
   const [comment, setComment] = useState("");
-  const userId = "123"; // Replace with actual user ID from authentication
+  const userId = JSON.parse(localStorage.getItem("user") ?? {});
 
   const handleLike = async () => {
     try {
