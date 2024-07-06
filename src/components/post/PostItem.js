@@ -22,7 +22,6 @@ import { AppContext } from "../../context/AppContext";
 const PostItem = ({ post, setPosts }) => {
   const { isPostDeleted, setIsPostDeleted } = useContext(AppContext);
   const { showAlert } = useSweetAlert();
-  console.log("post: ", post);
   const [comment, setComment] = useState("");
   const userId = "123"; // Replace with actual user ID from authentication
 

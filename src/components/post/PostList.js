@@ -18,11 +18,10 @@ const dummyPosts = [
 ];
 
 const PostList = ({ posts }) => {
-  console.log("posts: ", posts);
   return (
     <div className="post-list">
       {posts.length > 0 &&
-        posts.map((post) => <PostItem key={post.id} post={post} />)}
+        posts.map((post) => <PostItem key={post._id} post={post} />)}
     </div>
   );
 };
