@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Register from "./components/Register";
 import HomePage from "./components/Home";
 import CreateEditPost from "./components/post/CreateEditPost";
+import ProfileCard from "./components/account/Profile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,8 @@ root.render(
           <Route exact path="/" Component={HomePage} />
           <Route exact path="/create-post" Component={CreateEditPost} />
           <Route exact path="/edit/:post_id" Component={CreateEditPost} />
+          <Route exact path="/profile/:user_id" Component={ProfileCard} />
+
           {/* <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />

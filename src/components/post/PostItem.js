@@ -95,7 +95,12 @@ const PostItem = ({ post, setPosts }) => {
             width="32"
             height="32"
           /> */}
-          <span className="font-weight-bold">{post?.user_id?.username}</span>
+          <a
+            href={`/profile/${post?.user_id?._id}`}
+            className="font-weight-bold username"
+          >
+            {post?.user_id?.username}
+          </a>
         </div>
 
         {/* <Button

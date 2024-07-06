@@ -1,31 +1,43 @@
 .post-item {
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .dropdown-menu {
+    min-width: 120px;
+  }
+
+  .btn-link {
+    color: $secondary-color;
+    padding: 0;
+    margin-right: 1rem;
+
     &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-  
-    .card-body {
-      padding: 1.5rem;
-    }
-  
-    .dropdown-menu {
-      min-width: 120px;
-    }
-  
-    .btn-link {
-      color: $secondary-color;
-      padding: 0;
-      margin-right: 1rem;
-  
-      &:hover {
-        color: $primary-color;
-        text-decoration: none;
-      }
+      color: $primary-color;
+      text-decoration: none;
     }
   }
-  .action_buttons{
-    cursor: pointer;
+}
+
+.action_buttons {
+  cursor: pointer;
+}
+
+.username {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus {
+    text-decoration: none;
+    color: #000;
   }
+}

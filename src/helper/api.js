@@ -24,3 +24,4 @@ export const dislikePost = (postId, userId) =>
 export const register = (formData) =>
   api.post(`/user/add-user`, { ...formData });
 export const login = (formData) => api.post(`/user/login`, { ...formData });
+export const profile = (user_id) => api.get(`/user/profile/${user_id}`);

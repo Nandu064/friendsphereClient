@@ -60,7 +60,7 @@ const Header = () => {
         {/* <a href="#services" className="nav-link">
           Services
         </a> */}
-        {!isRegister && isLoggedIn && (
+        {isLoggedIn && (
           <a href="/profile" className="nav-link profile">
             <div className="profile_icon">
               <span>HY</span>
