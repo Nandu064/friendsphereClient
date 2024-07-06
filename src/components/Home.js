@@ -6,6 +6,7 @@ import { getPosts } from "../helper/api";
 import { AppContext } from "../context/AppContext";
 
 const HomePage = () => {
+  const { isPostDeleted } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const HomePage = () => {
       }
     };
     fetchPosts();
-  }, []);
+  }, [isPostDeleted]);
 
   return (
     <div className="instagram-clone">

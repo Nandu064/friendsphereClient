@@ -8,6 +8,7 @@ export default function AppContextProvider({ children }) {
   const [user, setUser] = React.useState({});
   const [platform, setPlatform] = useState("desktop");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isPostDeleted, setIsPostDeleted] = useState("");
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -25,6 +26,8 @@ export default function AppContextProvider({ children }) {
     platform,
     setUser,
     isLoggedIn,
+    isPostDeleted,
+    setIsPostDeleted,
     setIsLoggedIn,
   };
 

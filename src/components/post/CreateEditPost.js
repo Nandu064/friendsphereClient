@@ -13,7 +13,6 @@ import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 import { addPost, getPostById } from "../../helper/api";
 import useSweetAlert from "../../customhooks/useSweetAlert";
-import SweetAlert from "../../customhooks/useSweetAlert";
 import { useParams } from "react-router-dom";
 
 const CreateEditPost = () => {

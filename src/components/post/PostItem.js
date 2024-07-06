@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card, CardBody, CardText, Button, Input } from "reactstrap";
 import {
   FaHeart,
@@ -6,15 +6,21 @@ import {
   FaComment,
   FaPaperPlane,
   FaEllipsisH,
+  FaTrash,
 } from "react-icons/fa";
+
+import useSweetAlert from "../../customhooks/useSweetAlert";
 import {
   addComment,
   likePost,
   dislikePost,
   deletePost,
 } from "../../helper/api";
+import { AppContext } from "../../context/AppContext";
 
 const PostItem = ({ post, setPosts }) => {
+  const { isPostDeleted, setIsPostDeleted } = useContext(AppContext);
+  const { showAlert } = useSweetAlert();
   console.log("post: ", post);
   const [comment, setComment] = useState("");
   const userId = "123"; // Replace with actual user ID from authentication
@@ -82,18 +88,50 @@ const PostItem = ({ post, setPosts }) => {
     <Card className="post-item mb-4">
       <div className="post-header d-flex justify-content-between align-items-center p-3">
         <div className="d-flex align-items-center">
-          <img
+          {/* <img
             src={post?.userAvatar}
             alt={post?.username}
             className="rounded-circle mr-2"
             width="32"
             height="32"
-          />
-          <span className="font-weight-bold">{post?.username}</span>
+          /> */}
+          <span className="font-weight-bold">{post?.user_id?.username}</span>
         </div>
-        <Button color="link" className="p-0" onClick={handleDelete}>
-          <FaEllipsisH />
-        </Button>
+
+        {/* <Button
+          // color="link"
+          className="p-0 action-buttons"
+          onClick={handleDelete}
+        > */}
+        {/* <FaEllipsisH /> */}
+        <FaTrash
+          className="action_buttons"
+          onClick={async () => {
+            await showAlert({
+              title: "Are you sure!",
+              text: "Once you delete the post you cannot revert",
+              icon: "error",
+              onConfirm: () => {
+                deletePost(post?._id).then(async (res) => {
+                  if (res) {
+                    await showAlert({
+                      title: res.data.message,
+                      icon: "success",
+                      onConfirm: () => {
+                        setIsPostDeleted(post?._id);
+                      },
+                    });
+                  }
+                });
+              },
+              onCancel: () => {
+                console.log("second", post?._id);
+              },
+              showCancelButton: true,
+            });
+          }}
+        />
+        {/* </Button> */}
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: post.post_content }}
@@ -103,21 +141,23 @@ const PostItem = ({ post, setPosts }) => {
         <div className="post-actions d-flex align-items-center mb-3">
           <Button color="link" className="mr-3 p-0" onClick={handleLike}>
             {post?.isLiked ? (
-              <FaHeart color="red" size={24} />
+              <FaHeart color="red" size={18} />
             ) : (
-              <FaRegHeart size={24} />
+              <FaRegHeart size={18} />
             )}
           </Button>
           <Button color="link" className="mr-3 p-0" onClick={handleDislike}>
-            <FaComment size={24} />
+            <FaComment size={18} />
           </Button>
           <Button color="link" className="p-0">
-            <FaPaperPlane size={24} />
+            <FaPaperPlane size={18} />
           </Button>
         </div>
         <p className="font-weight-bold mb-1">{post?.likes} likes</p>
         <CardText>
-          <span className="font-weight-bold mr-2">{post?.username}</span>
+          <span className="font-weight-bold mr-2">
+            {post?.user_id?.username}
+          </span>
           {post?.caption}
         </CardText>
         <div className="post-tags mb-2">

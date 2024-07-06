@@ -12,7 +12,8 @@ export const getPostById = (postId) => api.get(`/posts/get-post/${postId}`);
 export const addPost = (postData) => api.post("/posts/add-post", postData);
 export const editPost = (postId, postData) =>
   api.put(`/posts/${postId}`, postData);
-export const deletePost = (postId) => api.delete(`/posts/${postId}`);
+export const deletePost = (postId) =>
+  api.delete(`/posts/delete-post/${postId}`);
 export const addComment = (postId, commentData) =>
   api.post(`/posts/${postId}/comment`, commentData);
 export const likePost = (postId, userId) =>
