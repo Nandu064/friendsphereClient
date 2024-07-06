@@ -7,6 +7,7 @@ import {
   FaPaperPlane,
   FaEllipsisH,
   FaTrash,
+  FaEdit,
 } from "react-icons/fa";
 
 import useSweetAlert from "../../customhooks/useSweetAlert";
@@ -104,33 +105,41 @@ const PostItem = ({ post, setPosts }) => {
           onClick={handleDelete}
         > */}
         {/* <FaEllipsisH /> */}
-        <FaTrash
-          className="action_buttons"
-          onClick={async () => {
-            await showAlert({
-              title: "Are you sure!",
-              text: "Once you delete the post you cannot revert",
-              icon: "error",
-              onConfirm: () => {
-                deletePost(post?._id).then(async (res) => {
-                  if (res) {
-                    await showAlert({
-                      title: res.data.message,
-                      icon: "success",
-                      onConfirm: () => {
-                        setIsPostDeleted(post?._id);
-                      },
-                    });
-                  }
-                });
-              },
-              onCancel: () => {
-                console.log("second", post?._id);
-              },
-              showCancelButton: true,
-            });
-          }}
-        />
+        <div>
+          <FaEdit
+            className="action_buttons me-2"
+            onClick={() => {
+              window.location.href = "/edit/" + post?._id;
+            }}
+          />
+          <FaTrash
+            className="action_buttons "
+            onClick={async () => {
+              await showAlert({
+                title: "Are you sure!",
+                text: "Once you delete the post you cannot revert",
+                icon: "error",
+                onConfirm: () => {
+                  deletePost(post?._id).then(async (res) => {
+                    if (res) {
+                      await showAlert({
+                        title: res.data.message,
+                        icon: "success",
+                        onConfirm: () => {
+                          setIsPostDeleted(post?._id);
+                        },
+                      });
+                    }
+                  });
+                },
+                onCancel: () => {
+                  console.log("second", post?._id);
+                },
+                showCancelButton: true,
+              });
+            }}
+          />
+        </div>
         {/* </Button> */}
       </div>
       <div
