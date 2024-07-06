@@ -1,0 +1,22 @@
+
+
+@import '~bootstrap/scss/bootstrap';
+@import "./login";
+@import "./header";
+@import "./register";
+@import './variable';
+@import './homepage';
+@import './postlist';
+@import './postitem';
+@import './createeditpost';
+@import './commentmodal';
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: $background-color;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}

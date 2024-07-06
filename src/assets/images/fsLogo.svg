@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cls-1{fill:#d4a460;}
+      .cls-2{fill:#004466;}
+      .cls-3{fill:#ffffff;}
+    </style>
+  </defs>
+  <circle cx="100" cy="100" r="90" class="cls-2"/>
+  <path d="M100 10 A90 90 0 0 1 190 100 L160 100 A60 60 0 0 0 100 40 Z" class="cls-1"/>
+  <path d="M100 10 A90 90 0 0 0 10 100 L40 100 A60 60 0 0 1 100 40 Z" class="cls-1"/>
+  <path d="M100 190 A90 90 0 0 1 10 100 L40 100 A60 60 0 0 0 100 160 Z" class="cls-1"/>
+  <path d="M100 190 A90 90 0 0 0 190 100 L160 100 A60 60 0 0 1 100 160 Z" class="cls-1"/>
+  <circle cx="70" cy="70" r="10" class="cls-3"/>
+  <circle cx="130" cy="70" r="10" class="cls-3"/>
+  <path d="M50 110 Q100 150 150 110" stroke="#ffffff" stroke-width="5" fill="none"/>
+</svg>
